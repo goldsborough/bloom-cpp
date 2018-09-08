@@ -1,5 +1,5 @@
 ---
-Checks:       '*,-clang-diagnostic-*,-clang-analyzer-*,-fuchsia-*,-llvm-header-guard,-cppcoreguidelines-pro-type-reinterpret-cast,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-hicpp-signed-bitwise,-hicpp-explicit-conversions'
+Checks:       '*,-clang-diagnostic-*,-clang-analyzer-*,-fuchsia-*,-llvm-header-guard,-cppcoreguidelines-pro-type-reinterpret-cast,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-hicpp-signed-bitwise,-hicpp-explicit-conversions,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg,-google-readability-todo,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
 WarningsAsErrors: ''
 HeaderFilterRegex: 'include/bloom/.*'
 ...

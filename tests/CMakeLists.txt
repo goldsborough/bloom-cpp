@@ -8,6 +8,7 @@ target_compile_options(bloom-test PRIVATE
   -Wall
   -Wextra
   -pedantic
+  -Werror
 )
 
 set_property(TARGET bloom-test PROPERTY CXX_STANDARD 17)

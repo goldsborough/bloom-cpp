@@ -72,8 +72,7 @@ struct DefaultHasher {
     seed = distribution(generator);
   }
 
-  explicit DefaultHasher(uint32_t seed) : seed(seed) {
-  }
+  explicit DefaultHasher(uint32_t seed) : seed(seed) {}
 
   uint32_t operator()(Slice slice) const noexcept {
     return Detail::murmur3_32(slice.data(), slice.size(), seed);
