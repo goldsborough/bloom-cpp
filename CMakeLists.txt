@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 3.2)
 project(bloom)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 option(BLOOM_WITH_TESTS "Build tests" OFF)
 
 add_library(bloom INTERFACE)
 
 set(BLOOM_HEADERS
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/bloom.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/filter.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/hash.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/slice.hpp
 )

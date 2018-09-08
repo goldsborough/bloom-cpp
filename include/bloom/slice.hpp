@@ -14,14 +14,20 @@ struct Sliceable;
 
 class Slice {
  public:
-  Slice(const uint8_t* data, size_t size) noexcept : data_(data), size_(size) {}
+  Slice(const uint8_t* data, size_t size) noexcept : data_(data), size_(size) {
+  }
 
   template <typename T>
-  /* implicit */ Slice(const T& value) noexcept
-  : Slice(Sliceable<T>().to_slice(value)) {}
+  Slice(const T& value) noexcept  // NOLINT
+  : Slice(Sliceable<T>().to_slice(value)) {
+  }
 
-  const uint8_t* data() const noexcept { return data_; }
-  size_t size() const noexcept { return size_; }
+  const uint8_t* data() const noexcept {
+    return data_;
+  }
+  size_t size() const noexcept {
+    return size_;
+  }
 
  private:
   const uint8_t* data_;
