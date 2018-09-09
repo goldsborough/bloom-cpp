@@ -1,9 +1,10 @@
 # :mag: bloom-cpp
 
 <p align="center">
-  A simple header-only [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) implementation in C++14.
+  A header-only <a href="https://en.wikipedia.org/wiki/Bloom_filter">bloom filter</a> implementation in C++14.
   <br><br>
   <img alt="license" src="https://img.shields.io/github/license/mashape/apistatus.svg"/>
+  <a href="https://travis-ci.org/goldsborough/bloom-cpp"><img alt="build status" src="https://travis-ci.org/goldsborough/bloom-cpp.svg?branch=master"/></a>
 </p>
 
 ## API
@@ -14,14 +15,14 @@ A `Bloom::Filter` is parameterized by a size `n` and the number of hash function
 #include <bloom/filter.h>
 
 // 32 bits, 3 hash functions.
-Bloom::Filter filter(/*n=*/32, /*k=*/3);
+Bloom::Filter filter(32, 3);
 
 filter.put(42);
 filter.put("string");
 
 assert(filter.query(42)); // guaranteed
 assert(filter.query("string")); // guaranteed
-assert(filter.query(123.456)); // depends!
+assert(filter.query(123.456)); // maybe!
 
 filter.clear(); // unset all entries
 assert(!filter.query(42));
@@ -47,7 +48,7 @@ filter.query(MyType(...));
 ```
 
 Instead of passing the number of hash functions explicitly, you can also use one of
-`Bloom::Options`' factory methods to compute the optimal number given either an expected false
+`Bloom::Options` factory methods to compute the optimal number given either an expected false
 positive rate, or expected number of inserted values:
 
 ```cpp
@@ -55,7 +56,7 @@ Bloom::Filter filter1(Bloom::Options::ForFalsePositiveRate(/*size=*/100, /*fp=*/
 Bloom::Filter filter2(Bloom::Options::ForExpectedCount(/*size=*/100, /*expected_count=*/20)); // k = 4
 ```
 
-Finally, the library also provides `Bloom::StaticFilter`, a compile-time version implementation of `Bloom::Filter` that takes the size and hash count as (non-type) template parameters. `Bloom::StaticFilter` does not incur any heap allocations for its internal storage. The API is the same as `Bloom::Filter`:
+Finally, the library also provides `Bloom::StaticFilter`, a compile-time version implementation of `Bloom::Filter` that takes the size and hash count as (non-type) template parameters. `Bloom::StaticFilter` does not incur any heap allocations for its internal storage. The API is the same as `Bloom::Filter`.
 
 ```cpp
 Bloom::StaticFilter<32, 3> filter;
