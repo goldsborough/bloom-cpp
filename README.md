@@ -64,6 +64,10 @@ filter.put(123);
 filter.query("string");
 ```
 
+## Documentation
+
+The documentation for this project can be built by running `doxygen` from within the `docs/` folder. This will generate a `build/html` folder that contains the doxygen HTML output.
+
 ## Building
 
 The library is header only, so you can simply point your include path at the `include/` folder.
