@@ -61,7 +61,7 @@ matrix:
             - clang-3.4
             - gdb
       env:
-        - COMPILER=clang++-3.4
+        - COMPILER=clang++
         - BUILD_TYPE=Debug
     - compiler: clang-3.4-release
       addons:
@@ -73,32 +73,32 @@ matrix:
             - clang-3.4
             - gdb
       env:
-        - COMPILER=clang++-3.4
-        - BUILD_TYPE=Debug
-    - compiler: clang-6.0-debug
+        - COMPILER=clang++
+        - BUILD_TYPE=Release
+    - compiler: clang-5.0-debug
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-6.0
+            - llvm-toolchain-precise-5.0
           packages:
-            - clang-6.0
+            - clang-5.0
             - gdb
       env:
-        - COMPILER=clang++-6.0
+        - COMPILER=clang++
         - BUILD_TYPE=Debug
-    - compiler: clang-6.0-release
+    - compiler: clang-5.0-release
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-6.0
+            - llvm-toolchain-precise-5.0
           packages:
-            - clang-6.0
+            - clang-5.0
             - gdb
       env:
-        - COMPILER=clang++-6.0
-        - BUILD_TYPE=Debug
+        - COMPILER=clang++
+        - BUILD_TYPE=Release
 
 install:
   - CMAKE_VERSION_MM=3.2
