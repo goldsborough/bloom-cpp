@@ -7,7 +7,7 @@ dist: trusty
 
 matrix:
   include:
-    - compiler: gcc-debug
+    - compiler: gcc-5-debug
       addons:
         apt:
           sources:
@@ -18,7 +18,7 @@ matrix:
       env:
         - COMPILER=g++-5
         - BUILD_TYPE=Debug
-    - compiler: gcc-release
+    - compiler: gcc-5-release
       addons:
         apt:
           sources:
@@ -29,29 +29,75 @@ matrix:
       env:
         - COMPILER=g++-5
         - BUILD_TYPE=Release
-    - compiler: clang-debug
+    - compiler: gcc-7-debug
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.7
           packages:
-            - clang-3.7
+            - g++-7
             - gdb
       env:
-        - COMPILER=clang++-3.7
+        - COMPILER=g++-7
         - BUILD_TYPE=Debug
-    - compiler: clang-release
+    - compiler: gcc-7-release
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.7
           packages:
-            - clang-3.7
+            - g++-7
             - gdb
       env:
-        - COMPILER=clang++-3.7
+        - COMPILER=g++-7
+        - BUILD_TYPE=Release
+    - compiler: clang-3.4-debug
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.4
+          packages:
+            - clang-3.4
+            - gdb
+      env:
+        - COMPILER=clang++-3.4
+        - BUILD_TYPE=Debug
+    - compiler: clang-3.4-release
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.4
+          packages:
+            - clang-3.4
+            - gdb
+      env:
+        - COMPILER=clang++-3.4
+        - BUILD_TYPE=Debug
+    - compiler: clang-6.0-debug
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-6.0
+          packages:
+            - clang-6.0
+            - gdb
+      env:
+        - COMPILER=clang++-6.0
+        - BUILD_TYPE=Debug
+    - compiler: clang-6.0-release
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-6.0
+          packages:
+            - clang-6.0
+            - gdb
+      env:
+        - COMPILER=clang++-6.0
         - BUILD_TYPE=Debug
 
 install:
