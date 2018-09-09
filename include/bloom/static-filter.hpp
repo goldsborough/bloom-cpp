@@ -55,7 +55,7 @@ struct StaticFilter {
     return std::all_of(hashers_.begin(),
                        hashers_.end(),
                        [this, &key](const auto& hasher) {
-                         return bits_.test(hasher(key) % size());
+                         return this->bits_.test(hasher(key) % this->size());
                        });
   }
 

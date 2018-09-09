@@ -1,7 +1,7 @@
 # :mag: bloom-cpp
 
 <p align="center">
-  A header-only <a href="https://en.wikipedia.org/wiki/Bloom_filter">bloom filter</a> implementation in C++14.
+  A header-only <a href="https://en.wikipedia.org/wiki/Bloom_filter">bloom filter</a> implementation in C++14
   <br><br>
   <img alt="license" src="https://img.shields.io/github/license/mashape/apistatus.svg"/>
   <a href="https://travis-ci.org/goldsborough/bloom-cpp"><img alt="build status" src="https://travis-ci.org/goldsborough/bloom-cpp.svg?branch=master"/></a>
@@ -104,4 +104,5 @@ make clang-tidy
 
 ## License
 
-This project is released under the MIT License. For more information, see the LICENSE file.
+This project is released under the [MIT License](https://opensource.org/licenses/MIT). For more
+information, see the LICENSE file.

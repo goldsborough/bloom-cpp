@@ -76,7 +76,7 @@ class Filter {
     return std::all_of(hashers_.begin(),
                        hashers_.end(),
                        [this, &key](const auto& hasher) {
-                         return bits_[hasher(key) % size()];
+                         return this->bits_[hasher(key) % this->size()];
                        });
   }
 
