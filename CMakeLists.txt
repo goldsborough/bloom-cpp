@@ -7,6 +7,7 @@ add_library(bloom INTERFACE)
 
 set(BLOOM_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/filter.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/static-filter.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/hash.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/bloom/slice.hpp
 )

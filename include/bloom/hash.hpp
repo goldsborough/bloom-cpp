@@ -9,12 +9,16 @@
 
 namespace Bloom {
 namespace Detail {
+
+/// Logically rotates the given `value` left by `amount` bits.
 template <typename T>
 constexpr T rotate_left(T value, T amount) {
   constexpr auto word_size = std::numeric_limits<T>::digits;
   return (value << amount) | (value >> (word_size - amount));
 }
 
+/// Implements the 32-bit murmur3 hash function.
+/// See https://en.wikipedia.org/wiki/MurmurHash#MurmurHash3.
 inline uint32_t murmur3_32(const uint8_t* data, size_t size, uint32_t seed) {
   const uint32_t c1 = 0xcc9e2d51;
   const uint32_t c2 = 0x1b873593;
@@ -64,7 +68,14 @@ inline uint32_t murmur3_32(const uint8_t* data, size_t size, uint32_t seed) {
 }
 }  // namespace Detail
 
+/// The default hash functor used throughout the `Bloom` library.
+/// It is parameterized by a `seed` value that seeds the underlying hash
+/// function implementation.
 struct DefaultHasher {
+  /// Constructs the `DefaultHasher` with the given seed.
+  explicit DefaultHasher(uint32_t seed) : seed(seed) {}
+
+  /// Constructs the `DefaultHasher` with a randomly chosen seed.
   DefaultHasher() {
     std::random_device seed_device;
     std::mt19937 generator(seed_device());
@@ -72,12 +83,12 @@ struct DefaultHasher {
     seed = distribution(generator);
   }
 
-  explicit DefaultHasher(uint32_t seed) : seed(seed) {}
-
+  /// Hashes the `slice`.
   uint32_t operator()(Slice slice) const noexcept {
     return Detail::murmur3_32(slice.data(), slice.size(), seed);
   }
 
+  /// The seed used in this `DefaultHasher`.
   uint32_t seed;
 };
 }  // namespace Bloom
