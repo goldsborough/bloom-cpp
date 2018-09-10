@@ -12,7 +12,7 @@
 A `Bloom::Filter` is parameterized by a size `n` and the number of hash functions `k` to use for each insertion or query operation. Use `put(key)` to add a value to the filter and `query(key)` to test for membership.
 
 ```cpp
-#include <bloom/filter.h>
+#include <bloom/filter.hpp>
 
 // 32 bits, 3 hash functions.
 Bloom::Filter filter(32, 3);
@@ -56,9 +56,13 @@ Bloom::Filter filter1(Bloom::Options::ForFalsePositiveRate(/*size=*/100, /*fp=*/
 Bloom::Filter filter2(Bloom::Options::ForExpectedCount(/*size=*/100, /*expected_count=*/20)); // k = 4
 ```
 
-Finally, the library also provides `Bloom::StaticFilter`, a compile-time version implementation of `Bloom::Filter` that takes the size and hash count as (non-type) template parameters. `Bloom::StaticFilter` does not incur any heap allocations for its internal storage. The API is the same as `Bloom::Filter`.
+Finally, the library also provides `Bloom::StaticFilter` which takes the size and hash count as
+(non-type) template parameters. `Bloom::StaticFilter` does not incur any heap allocations for its
+internal storage. The API is the same as `Bloom::Filter`.
 
 ```cpp
+#include <bloom/static-filter.hpp>
+
 Bloom::StaticFilter<32, 3> filter;
 filter.put(123);
 filter.query("string");
